@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+ <decorators defaultdir="/decorator">
+	<excludes> 
+		<pattern>/jsp/frontjsp/*.jsp</pattern> 
+		<pattern>/jsp/backjsp/login.jsp</pattern>
+	</excludes> 
+	<decorator name="main" page="main.jsp">
+	    <pattern>/jsp/backjsp/*.jsp</pattern>
+	    <pattern>/back/*</pattern>
+	</decorator>
+ 	<decorator name="header" page="header.jsp"></decorator>
+ 	<decorator name="menu" page="menu.jsp"></decorator>
+ </decorators>

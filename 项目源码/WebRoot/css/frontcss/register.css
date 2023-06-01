@@ -1,0 +1,20 @@
+body,div,ol,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,input,textarea,p,th,td{ margin:0; padding:0;}
+h1,h2,h3,h4,h5,h6{ font-size:100%; font-weight:normal;}
+ol,ul{ list-style:none;}
+img,fieldset{ border:0 none; display:block;}
+.registerheader{
+	width:auto;
+	height:100px;
+}
+.registerh1{
+	line-height:100px;
+}
+.regcontent{
+	height:400px;
+	width:1140px;
+	background-color: #E5FADB;
+	padding-top:40px;
+}
+.bigsize{
+	font-size:16px;
+}

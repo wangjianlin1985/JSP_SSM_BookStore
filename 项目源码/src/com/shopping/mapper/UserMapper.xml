@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shopping.mapper.UserMapper">
+	<select id="userLogin" parameterType="user" resultType="user">
+		select * from user 
+		where username=#{username}
+		and password=#{password}
+		and role = #{role}
+	</select>
+	
+	<insert id="insertUser" useGeneratedKeys="true" keyProperty="id" parameterType="user">
+		insert into user(username,password,email,role,creater,createdate) values(#{username},#{password},#{email},#{role},#{creater},#{createdate})
+	</insert>
+	
+	<select id="checkUserById" parameterType="int" resultType="user">
+		select * from user
+		where id= #{id}
+	</select>
+	<update id="updateuser" parameterType="user">
+		update user set mobile = '${mobile}',email = '${email}',usersign='${usersign}',sex='${sex}',age='${age}' where id = ${id}
+	</update>
+	<select id="usercount" resultType="int">
+		select count(*) from user
+	</select>
+	<select id="userlist" parameterType="Map" resultType="userVO">
+		select * from user order by createdate desc limit #{start},#{count}
+	</select>
+</mapper>

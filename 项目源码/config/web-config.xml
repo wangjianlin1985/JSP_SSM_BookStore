@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+    http://www.springframework.org/schema/context    
+    http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+    
+    
+	<!-- 静态资源的解析 -->
+	<mvc:resources location="/jsp/" mapping="/jsp/**"/>
+	<mvc:resources location="/image/" mapping="/image/**"/>
+	<mvc:resources location="/js/" mapping="/js/**"/>
+	<mvc:resources location="/css/" mapping="/css/**"/>
+	
+	
+	<!-- springMVC配置start -->
+	<!-- 配置处理器映射器和处理器适配器 注解方式-->
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<!-- 开启spring注解，这个与spring的注解写一个就可以，最好别这么写，直接写打一下com.shopping就行了他就可以扫整个项目的spring注解 -->
+	<context:component-scan base-package="com.shopping"/>
+	<!-- 加载视图解析器并定义前缀和后缀 -->
+	<bean id="viewResolver"
+	          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	        <property name="prefix" value="/jsp/"/>
+	        <property name="suffix" value=".jsp"/>
+	</bean>
+	<!-- 定义上传文件规格以及大小 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize">
+			<value>5242880</value>
+		</property>
+	</bean>
+
+	
+</beans>

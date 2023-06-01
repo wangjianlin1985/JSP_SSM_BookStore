@@ -1,0 +1,35 @@
+body,div,ol,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,input,textarea,p,th,td{ margin:0; padding:0;}
+h1,h2,h3,h4,h5,h6{ font-size:100%; font-weight:normal;}
+ol,ul{ list-style:none;}
+img,fieldset{ border:0 none; display:block;}
+body{ 
+  background-image: url(../../image/loginback.jpg);
+  background-repeat: no-repeat;
+  background-position: 0px 120px;
+}
+.loginheader{
+	width:auto;
+	height:125px;
+}
+.login1{
+	width:600px; 
+	height:300px; 
+	margin:0 auto;
+	margin-top:200px;
+	background-color: #F2F2F2;
+}
+
+.divbackground{
+	height:450px;
+}
+.divlogin{
+	height:400px;
+	width:346px;
+	background-color:#FFFFFF;
+	margin-left:150px;
+	margin-top:30px;
+}
+.loginh3{
+	margin-left:30px;
+	padding-top:30px;
+}

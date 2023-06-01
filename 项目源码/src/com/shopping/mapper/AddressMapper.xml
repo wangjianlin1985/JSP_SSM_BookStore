@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shopping.mapper.AddressMapper">
+	<select id="selectaddressbyid" parameterType="address" resultType="addressVO">
+		select * from address where userid=#{userid}
+	</select>
+	<select id="addresscount" parameterType="address" resultType="int">
+		select count(*) from address where userid=#{userid}
+	</select>
+	<insert id="insertaddress" parameterType="address">
+		insert into address(userid,address,creater,createdate) values(#{userid},#{address},#{creater},#{createdate})
+	</insert>
+	<delete id="deleteaddress" parameterType="address">
+		delete from address where id=#{id}
+	</delete>
+</mapper>

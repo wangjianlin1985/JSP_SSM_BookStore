@@ -1,0 +1,32 @@
+body,div,ol,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,input,textarea,p,th,td{ margin:0; padding:0;}
+ol,ul{ list-style:none;}
+img,fieldset{ border:0 none; display:block;}
+
+.goodlist{
+	padding-top:30px;
+	width:1140px;
+	margin:0 auto;
+}
+.checkgoods{
+	margin-top:20px;
+}
+.goods{
+	width:auto;
+	background-color: #EAEAEA;
+}
+.goodslist{
+   float:left;
+   margin-left: 40px;
+   margin-top:20px;
+   margin-right:15px;
+}
+.goodslist dd{
+   margin:0px;
+   font-size:16px;
+}
+.goodslist dd.dd_name{
+   color:blue;
+}
+.goodslist dd.dd_city{
+   color:#000;
+}

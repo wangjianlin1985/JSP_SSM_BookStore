@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+body,div,ol,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,input,textarea,p,th,td{ margin:0; padding:0;}
+ol,ul{ list-style:none;}
+img,fieldset{ border:0 none; display:block;}
+
+#content{width:auto;height:92%;}
+#contright{width:85%;height:100%;position:fixed;float:left;margin-left:15%;}

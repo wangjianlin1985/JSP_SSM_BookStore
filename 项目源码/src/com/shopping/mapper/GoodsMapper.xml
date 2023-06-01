@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shopping.mapper.GoodsMapper">
+	<select id="getTuiGoods" resultType="goods">
+		select * from goods where tuijian = 1
+	</select>
+	<select id="getGoodsById" parameterType="int" resultType="goodsVO">
+		select gs.goodstype as typename,g.* from goods g left join goodstype gs on gs.id = g.typeid where g.id = #{id}
+	</select>
+	<select id="goodslist" parameterType="Map" resultType="goods">
+		select * from goods where 1=1
+		<if test="typeid != null and typeid !=0">
+			and typeid = #{typeid}
+		</if>
+		limit #{start},#{count}
+	</select>
+	
+	<select id="rolegoodslist" parameterType="Map" resultType="goodsVO">
+		select gs.goodstype as typename,g.* from goods g left join goodstype gs on g.typeid = gs.id where 1=1
+		<if test="typeid != null and typeid !=0">
+			and typeid = #{typeid}
+		</if>
+		limit #{start},#{count}
+	</select>
+	
+	<select id="goodstypebyid" parameterType="int" resultType="goodstype">
+		select * from goodstype	where id = #{id}
+	</select>
+	
+	<select id="goodstypelist" resultType="goodstype">
+		select * from goodstype	
+	</select>
+	
+	<select id="goodsCount" parameterType="goods" resultType="int">
+		select count(*) from goods where 1=1
+		<if test="typeid != null and typeid !=0">
+			and typeid = #{typeid}
+		</if>
+	</select>
+	
+	<update id="updategoodstui" parameterType="goods">
+		update goods set tuijian=${tuijian} where id=${id}
+	</update>
+	
+	<update id="updategoodscount" parameterType="goodsVO">
+		update goods set count=${count},total=${total} where id=${id}
+	</update>
+		
+	<update  id="savegoods" parameterType="goods">
+		update goods set name = '${name}',<if test="photourl!=null">photourl=#{photourl},</if>title='${title}',descript='${descript}',price=${price} where id=${id}
+	</update>
+	<delete id="deletegoodsbyid" parameterType="goods">
+		delete from goods where id = ${id}
+	</delete>
+	<insert id="addgoods" parameterType="goods">
+		insert into goods(name,typeid,title,descript,price,messageurl,photourl,weight,total,count,tuijian,creater,createdate) values(#{name},#{typeid},#{title},#{descript},#{price},#{messageurl},#{photourl},#{weight},#{total},#{count},#{tuijian},#{creater},#{createdate})
+	</insert>
+</mapper>

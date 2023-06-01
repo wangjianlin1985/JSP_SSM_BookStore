@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shopping.mapper.AftersalesMapper">
+	<insert id="insertAftersales" parameterType="aftersales">
+		insert into aftersales(userid,goodsid,orderid,status,type,cause,creater,createdate) values(#{userid},#{goodsid},#{orderid},#{status},#{type},#{cause},#{creater},#{createdate})
+	</insert>
+	
+	<select id="roleaftersalescount" parameterType="aftersalesVO" resultType="int">
+		select count(*) from aftersales s where 1=1
+		<if test="status != null and status !=0">
+			and s.status=${status}
+		</if>
+	</select>
+	<select id="roleaftersaleslist" parameterType="Map" resultType="aftersalesVO">
+		select s.orderid as orderid,o.ordernum as ordernum,s.userid as userid,s.goodsid as goodsid,s.status as status,s.type as type,s.cause as cause,
+		s.createdate as createdate,g.photourl as photourl,g.title as title,u.username as username,g.name as name
+		from aftersales s left join orderdetail o on s.orderid = o.id left join goods g on s.goodsid = g.id LEFT JOIN user u on s.userid = u.id
+		where 1=1
+		<if test="status != null and status !=0">
+			and s.status=${status}
+		</if>
+		order by createdate desc 
+		limit #{start},#{count}
+	</select>
+	
+	<select id="selectaftersalescountss" parameterType="aftersalesVO" resultType="int">
+		select count(*) from aftersales s where userid = #{userid} and goodsid = #{goodsid} and orderid=#{orderid}
+	</select>
+	
+	<update id="roleupdateaftersales" parameterType="aftersalesVO">
+		update aftersales set status = ${status} where userid = #{userid} and goodsid = #{goodsid} and orderid=#{orderid}
+	</update>
+</mapper>

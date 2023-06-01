@@ -1,0 +1,13 @@
+body,div,ol,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,input,textarea,p,th,td{ margin:0; padding:0;}
+ol,ul{ list-style:none;}
+img,fieldset{ border:0 none; display:block;}
+
+.shopping{
+	padding-top:30px;
+	width:1140px;
+	margin:0 auto;
+}
+
+.shoppinglist{
+	margin-top:30px;
+}

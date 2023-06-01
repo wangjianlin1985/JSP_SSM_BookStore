@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shopping.mapper.ShoppingCertMapper">
+	<insert id="addshoppingcart" useGeneratedKeys="true" keyProperty="id" parameterType="shoppingCart">
+		insert into shoppingcart(userid,goodsid,price,count,creater,createdate) values(#{userid},#{goodsid},#{price},#{count},#{creater},#{createdate})
+	</insert>
+	<select id="selectShoppingCartByUserIdGoodsId" parameterType="shoppingCart" resultType="shoppingCart">
+		select * from shoppingcart where userid = #{userid} and goodsid = #{goodsid}
+	</select>
+	<update id="updateShoppingCartbyUserIdGoodsId" parameterType="shoppingCart">
+		update shoppingcart set count = #{count},price = #{price} where userid = #{userid} and goodsid = #{goodsid}
+	</update>
+	<select id="selectShoppingCartByUserId" parameterType="shoppingCart" resultType="shoppingCartVO">
+		select s.id as id,s.userid as userid,g.name as name,g.id as goodsid,g.photourl as photourl,g.title as title,g.price as oneprice,g.weight as weight,s.count as count,s.price as price
+		from shoppingcart s left join goods g on s.goodsid = g.id where userid = #{userid}
+	</select>
+	<delete id="deletegoodsbyid" parameterType="shoppingCart">
+		delete from shoppingcart where userid = #{userid} and goodsid = #{goodsid}
+	</delete>
+</mapper>

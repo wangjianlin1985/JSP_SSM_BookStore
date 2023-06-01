@@ -1,0 +1,34 @@
+body,div,ol,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,input,textarea,p,th,td{ margin:0; padding:0;}
+ol,ul{ list-style:none;}
+img,fieldset{ border:0 none; display:block;}
+
+.person{
+	padding-top:30px;
+	width:1140px;
+	margin:0 auto;
+}
+.uls{
+	margin-top:30px;
+}
+.usermessage{
+	width:auto;
+	height:400px;
+	background-color: #F8F8F8;
+	margin-top:30px;
+}
+.firsttop{
+	padding-top:30px;
+}
+
+.addressmessage{
+	width:auto;
+	height:600px;
+	background-color: #F8F8F8;
+	margin-top:30px;
+}
+.addresslist{
+	padding-top:30px;
+	width:915px;
+	margin:0 auto;
+	text-align:center;
+}

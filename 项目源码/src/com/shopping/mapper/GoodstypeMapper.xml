@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shopping.mapper.GoodstypeMapper">
+	
+	<select id="rolegoodstypecount" parameterType="goodstypeVO" resultType="int">
+		select count(*) from goodstype s
+	</select>
+	
+	<select id="rolegoodstypelist" parameterType="Map" resultType="goodstypeVO">
+		select s.id as id,s.goodstype as goodstype,s.createdate as createdate from goodstype s 
+		order by createdate desc 
+		limit #{start},#{count}
+	</select>
+	
+	<insert id="addgoodstype" parameterType="goodsType">
+		insert into goodstype(goodstype,creater,createdate) values(#{goodstype},#{creater},#{createdate})
+	</insert>
+	
+	<delete id="deletegoodstype" parameterType="goodsType">
+		delete from goodstype where id =${id}
+	</delete>
+</mapper>

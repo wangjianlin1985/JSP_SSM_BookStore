@@ -1,0 +1,67 @@
+body,div,ol,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,input,textarea,p,th,td{ margin:0; padding:0;}
+ol,ul{ list-style:none;}
+img,fieldset{ border:0 none; display:block;}
+
+.header{
+	height:200px;
+	widht:900px;
+	border-bottom-style:solid;
+	border-bottom-width: 1px;
+}
+.headertop{
+	height:40px;
+	width:auto;
+	background-color:#6ABE44;
+}
+.rightlogin{
+	height:40px;
+	width:300px;
+	float:right;
+}
+.rightlogin p{
+	float:right;
+	padding-right:15px;
+	color:#000000;
+}
+.denglu{
+	width:auto;
+	line-height:40px;
+	float:right;
+	padding-right:15px;
+	color:#000000;
+}
+.denglu a{
+	color:#000000;
+}
+a:link{
+	font-weight:bold;
+	text-decoration: none;
+}
+a:hover{
+	color:#ff0000;
+	font-weight:bold;
+	text-decoration: none;
+}
+a:active{
+	font-weight:bold;
+	text-decoration: none;
+}
+
+.headercenter{
+	width:1140px;
+	margin:0 auto;
+}
+
+.headercenter h1{
+	padding-top:20px;
+}
+.headerbar{
+	width:1140px;
+	margin:0 auto;
+}
+.headerbar nav{
+	margin-top:30px;
+}
+.headback{	
+	font-size:16px;
+}

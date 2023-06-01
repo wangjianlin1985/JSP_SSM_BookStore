@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shopping.mapper.OrderMapper">
+	<insert id="addorders" useGeneratedKeys="true" keyProperty="id" parameterType="orders">
+		insert into orders(userid,ordernum,creater,createdate) values(#{userid},#{ordernum},#{creater},#{createdate})
+	</insert>
+	
+	<insert id="addorderdetail" useGeneratedKeys="true" keyProperty="id" parameterType="orderDetial">
+		insert into orderdetail(userid,ordernum,goodsid,address,count,price,status,creater,createdate) values(#{userid},#{ordernum},#{goodsid},#{address},#{count},#{price},#{status},#{creater},#{createdate})
+	</insert>
+	<select id="orderlist" parameterType="Map" resultType="orderVO">
+		select od.id as id,od.ordernum as ordernum,od.userid as userid,od.goodsid as goodsid,od.count as count,od.price as price,od.status as status,od.senddate as senddate,
+		od.createdate as createdate,g.photourl as photourl,g.title as title,u.username as username,g.name as name
+		from orderdetail od left join orders o on od.ordernum = o.ordernum left join goods g on od.goodsid = g.id LEFT JOIN user u on od.userid = u.id
+		where od.userid = #{userid}
+		order by createdate desc 
+		limit #{start},#{count}
+	</select>
+	<select id="ordercount" parameterType="orderVO" resultType="int">
+		select count(*) from orderdetail where userid = #{userid}
+	</select>
+	<delete id="deleteorderbyid" parameterType="orderDetial">
+		delete from orderdetail where userid = #{userid} and goodsid = #{goodsid} and ordernum=#{ordernum}
+	</delete>
+	<select id="roleordercount" parameterType="orderVO" resultType="int">
+		select count(*) from orderdetail od where 1=1
+		<if test="status != null and status !=0">
+			and od.status=${status}
+		</if>
+	</select>
+	<select id="roleorderlist" parameterType="Map" resultType="orderVO">
+		select od.ordernum as ordernum,od.userid as userid,od.goodsid as goodsid,od.count as count,od.price as price,od.status as status,od.senddate as senddate,
+		od.createdate as createdate,g.photourl as photourl,g.title as title,u.username as username,g.name as name
+		from orderdetail od left join orders o on od.ordernum = o.ordernum left join goods g on od.goodsid = g.id LEFT JOIN user u on od.userid = u.id
+		where 1=1
+		<if test="status != null and status !=0">
+			and od.status=${status}
+		</if>
+		order by createdate desc 
+		limit #{start},#{count}
+	</select>
+	<update id="roleupdateorder" parameterType="orderDetial">
+		update orderdetail set status = ${status} where userid = #{userid} and goodsid = #{goodsid} and ordernum=#{ordernum}
+	</update>
+	
+	<select id="selectorderbyid" parameterType="orderDetial" resultType="orderDetial">
+		select * from orderdetail where id=${id}
+	</select>
+</mapper>
